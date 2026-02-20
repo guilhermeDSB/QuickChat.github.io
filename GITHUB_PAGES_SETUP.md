@@ -1,30 +1,37 @@
 # QuickChat - GitHub Pages
 
-Este repositÛrio contÈm o site do QuickChat hospedado no GitHub Pages.
+Este reposit√≥rio cont√©m o site do QuickChat hospedado no GitHub Pages.
 
-## Como est· configurado
+## Como est√° configurado
 
-- **Build**: Feito com Vite + React
-- **Build Output**: Pasta docs/
+- **Tipo**: Site informativo est√°tico
 - **GitHub Pages Source**: main branch, pasta /docs
 - **URL**: https://guilhermeDSB.github.io/QuickChat.github.io/
 
-## Para fazer alteraÁıes
+## Sobre o Projeto
 
-1. Edite os arquivos no diretÛrio src/
-2. Execute 
-pm install e 
-pm run build
-3. FaÁa commit e push dos arquivos da pasta docs/
+QuickChat √© uma aplica√ß√£o de compartilhamento de arquivos e chat em tempo real que roda em Node.js com Socket.IO. 
 
-## ConfiguraÁ„o no GitHub
+Como o GitHub Pages s√≥ hospeda sites est√°ticos e n√£o pode executar c√≥digo Node.js do lado do servidor, este site serve apenas para fornecer informa√ß√µes sobre o projeto.
 
-Certifique-se de que no repositÛrio, em **Settings > Pages**:
-- Source est· configurado como Deploy from a branch
-- Branch est· configurado como main
-- Folder est· configurado como / (root) ou /docs dependendo da configuraÁ„o
+## Para Executar Localmente
+
+1. Clone o reposit√≥rio
+2. Instale as depend√™ncias: `npm install`
+3. Configure a chave da API do Gemini no `.env`
+4. Execute o servidor: `npm start`
+
+## Para Deploy em Produ√ß√£o
+
+Para usar o QuickChat completamente funcional, voc√™ precisa implant√°-lo em um servi√ßo que suporte Node.js:
+
+- Heroku
+- Vercel (com fun√ß√µes serverless)
+- Render
+- DigitalOcean App Platform
+- AWS Elastic Beanstalk
 
 ## Notas importantes
 
-- O arquivo .nojekyll garante que o GitHub Pages n„o processa os arquivos com Jekyll
-- A configuraÁ„o ase: '/QuickChat.github.io/' no ite.config.ts È necess·ria para que os caminhos das assets funcionem corretamente
+- O arquivo .nojekyll garante que o GitHub Pages n√£o processe os arquivos com Jekyll
+- O conte√∫do real do QuickChat requer um ambiente Node.js para funcionar

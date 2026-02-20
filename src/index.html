@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickChat - Real-time File Sharing & Chat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        .features {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        .feature {
+            background: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 10px;
+            flex: 1;
+            min-width: 200px;
+        }
+        button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+        }
+        button:hover {
+            background: #2980b9;
+        }
+        .chat-container {
+            margin-top: 30px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            background: #fafafa;
+            display: none;
+        }
+        .messages {
+            height: 200px;
+            overflow-y: auto;
+            border: 1px solid #eee;
+            padding: 10px;
+            margin: 10px 0;
+            background: white;
+            text-align: left;
+        }
+        input[type="text"] {
+            width: 70%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>QuickChat</h1>
+        <p>Real-time file sharing and collaborative chat rooms without registration</p>
+        
+        <div class="features">
+            <div class="feature">
+                <h3>💬 Instant Chat</h3>
+                <p>Join chat rooms instantly without signup</p>
+            </div>
+            <div class="feature">
+                <h3>📁 File Sharing</h3>
+                <p>Share files in real-time with your team</p>
+            </div>
+            <div class="feature">
+                <h3>🔒 Secure</h3>
+                <p>No registration required, privacy focused</p>
+            </div>
+        </div>
+        
+        <button id="createRoom">Create New Room</button>
+        <button id="joinRoom">Join Existing Room</button>
+        
+        <div class="chat-container" id="chatContainer">
+            <h2>Room: <span id="roomName"></span></h2>
+            <div class="messages" id="messages"></div>
+            <div>
+                <input type="text" id="messageInput" placeholder="Type your message...">
+                <button id="sendMessage">Send</button>
+            </div>
+            <div style="margin-top: 10px;">
+                <input type="file" id="fileInput">
+                <button id="sendFile">Send File</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple frontend implementation for demonstration
+        document.getElementById('createRoom').addEventListener('click', function() {
+            const roomId = Math.random().toString(36).substring(2, 8).toUpperCase();
+            alert('Your room ID is: ' + roomId + '\nIn a full implementation, this would connect to the server.');
+            startChat(roomId);
+        });
+
+        document.getElementById('joinRoom').addEventListener('click', function() {
+            const roomId = prompt('Enter room ID:');
+            if (roomId) {
+                alert('Joining room: ' + roomId + '\nIn a full implementation, this would connect to the server.');
+                startChat(roomId);
+            }
+        });
+
+        function startChat(roomId) {
+            document.getElementById('roomName').textContent = roomId;
+            document.getElementById('chatContainer').style.display = 'block';
+            
+            // Add sample messages
+            const messagesDiv = document.getElementById('messages');
+            messagesDiv.innerHTML = '<p><strong>System:</strong> Welcome to room ' + roomId + '!</p>';
+            messagesDiv.innerHTML += '<p><strong>System:</strong> This is a demo interface. In a full implementation, this would connect to the Node.js server.</p>';
+        }
+
+        document.getElementById('sendMessage').addEventListener('click', function() {
+            const messageInput = document.getElementById('messageInput');
+            if (messageInput.value.trim() !== '') {
+                const messagesDiv = document.getElementById('messages');
+                messagesDiv.innerHTML += '<p><strong>You:</strong> ' + messageInput.value + '</p>';
+                messageInput.value = '';
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            }
+        });
+
+        // Allow Enter key to send message
+        document.getElementById('messageInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.getElementById('sendMessage').click();
+            }
+        });
+    </script>
+</body>
+</html>
